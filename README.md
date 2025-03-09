@@ -47,6 +47,46 @@ SecureConnect/
 │   ├── server.js
 └── README.md
 ```
+🚀 Instructions to Run the Project
+
+1️⃣ Clone the Repository
+
+git clone https://github.com/yourusername/SecureConnect.git
+cd SecureConnect
+
+2️⃣ Database Setup & Configuration
+
+1. Create the MySQL Database
+
+Log into MySQL and create a database:
+
+CREATE DATABASE secureconnect;
+USE secureconnect;
+
+2. Import the Database Dump (Recommended)
+
+Run the following command to import the database schema:
+
+mysql -u your_user -p secureconnect < database_dump.sql
+
+Alternatively, create the users table manually:
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+3️⃣ Setup Environment Variables
+
+Create a .env file inside the server directory and add:
+
+SECRET_KEY=your_secret_key
+DB_HOST=your_database_host
+DB_USER=your_database_user
+DB_PASS=your_database_password
+DB_NAME=secureconnect
+
 
 ## 🚀 Getting Started
 
@@ -77,4 +117,18 @@ npm start
 cd frontend
 npm start
 ```
+
+🔍 Assumptions Made During Development
+
+Username must be unique and at least 8 characters long.
+Password must contain an uppercase letter, a lowercase letter, and a special character.
+Users remain logged in until they manually log out.
+The backend is connected to a MySQL database with a users table.
+
+✨ Additional Features
+
+Password Visibility Toggle: Users can show/hide their password while typing.
+Live Password Strength Indicator: Password strength updates dynamically based on complexity.
+Real-time Username Validation: Checks if a username is already taken before submission.
+Session Management: Users stay logged in across sessions until they log out.
 
